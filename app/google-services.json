@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1091113408067",
+    "firebase_url": "https://onstagram-63eef.firebaseio.com",
+    "project_id": "onstagram-63eef",
+    "storage_bucket": "onstagram-63eef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091113408067:android:dbebad734c0964478526f6",
+        "android_client_info": {
+          "package_name": "com.icandothisallday2020.onstagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091113408067-hd5jfurlaafq98pajv9smvf8hqdrgv13.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icandothisallday2020.onstagram",
+            "certificate_hash": "40b77af04b2099e281becc9b6cbc50045618433f"
+          }
+        },
+        {
+          "client_id": "1091113408067-u2utl6atovhs3p0dp63kctp2iuqmlv1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_XZIitjGMXjhDSDGp1p5Z7JZ_zOCfias"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091113408067-u2utl6atovhs3p0dp63kctp2iuqmlv1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
