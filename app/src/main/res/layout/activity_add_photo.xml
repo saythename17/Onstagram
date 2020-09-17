@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation.AddPhotoActivity">
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="-8dp"
+        android:text="Onstagram"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/billabong"
+        android:textColor="@android:color/black"/>
+    <View
+        android:layout_below="@id/app_title"
+        android:id="@+id/toolbar_devision"
+        android:background="@color/colorDivision"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ImageView
+        android:id="@+id/add_photo_image"
+        android:layout_below="@id/toolbar_devision"
+        android:layout_margin="8dp"
+        android:paddingHorizontal="8dp"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et"
+        android:layout_below="@id/add_photo_image"
+        android:paddingHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/add_photo_et_explain"
+            android:hint="@string/hint_image_content"
+            android:gravity="top"
+            android:padding="8dp"
+            android:inputType="textMultiLine"
+            android:minLines="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/add_photo_btn_upload"
+        android:layout_below="@id/et"
+        android:text="@string/upload_image"
+        android:textColor="@android:color/white"
+        android:layout_marginHorizontal="8dp"
+        android:backgroundTint="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

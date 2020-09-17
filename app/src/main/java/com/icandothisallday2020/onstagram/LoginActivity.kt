@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         auth=FirebaseAuth.getInstance()
-        email_LoginBtn.setOnClickListener { signInAndroid() }
+        email_LoginBtn.setOnClickListener { signinEmail() }
         google_signIn_button.setOnClickListener {
             //Step.1 : Google Login-- connect to platform
             googleLogin()
