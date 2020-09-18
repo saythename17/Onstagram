@@ -56,7 +56,8 @@ class AddPhotoActivity : AppCompatActivity() {
         }
     }//onActivityResult.................]
 
-
+//************************content data model****************************************
+    //Systematic management for upload photos//use firestore
 
 
     fun contentUpload() {
