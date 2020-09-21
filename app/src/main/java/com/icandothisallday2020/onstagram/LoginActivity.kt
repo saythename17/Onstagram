@@ -34,6 +34,11 @@ class LoginActivity : AppCompatActivity() {
     val GOOGLE_LOGIN_CODE = 9001
     var callbackManager : CallbackManager? =null
 
+    override fun onStart() {
+        super.onStart()
+        moveMainPage(auth?.currentUser)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -75,8 +80,7 @@ class LoginActivity : AppCompatActivity() {
             Log.e("TAGff", "printHashKey()", e)
         }
     }
-    
-    
+
     
     
     
@@ -213,6 +217,7 @@ class LoginActivity : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

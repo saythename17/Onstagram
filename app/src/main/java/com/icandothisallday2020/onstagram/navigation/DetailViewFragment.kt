@@ -1,5 +1,6 @@
 package com.icandothisallday2020.onstagram.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.icandothisallday2020.onstagram.R
 import com.icandothisallday2020.onstagram.navigation.model.ContentDTO
 import kotlinx.android.synthetic.main.fragment_detail.view.*
+import kotlinx.android.synthetic.main.item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
+import kotlinx.android.synthetic.main.item_detail.view.detail_item_profile_image
 
 class DetailViewFragment : Fragment(){
     var firestore: FirebaseFirestore? =null
@@ -37,18 +40,17 @@ class DetailViewFragment : Fragment(){
 
 
     inner class DetailRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        var contentDTOs :ArrayList<ContentDTO>
-        var contentUidList :ArrayList<String>
+        var contentDTOs :ArrayList<ContentDTO> = ArrayList()
+        var contentUidList :ArrayList<String> = ArrayList()
 
 
         init {
-            contentDTOs = ArrayList()
-            contentUidList = ArrayList()
-            var uid =FirebaseAuth.getInstance().currentUser?.uid
             firestore?.collection("images")?.orderBy("timestamp")
                 ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                     contentDTOs.clear()
                     contentUidList.clear()
+                    //Sometimes, this code return null of querySnapshot when it signout
+                    if(querySnapshot == null) return@addSnapshotListener
                     for(snapshot in querySnapshot!!.documents){
                         var item = snapshot.toObject(ContentDTO::class.java)
                         contentDTOs.add(item!!)
@@ -80,7 +82,7 @@ class DetailViewFragment : Fragment(){
             viewHolder.detail_item_profile_name.text =contentDTOs!![position].userID
 
             //Image
-            Glide.with(holder.itemView.context).load(contentDTOs!![position].imageUrl).into(viewHolder.detail_item_iv_content)
+            Glide.with(holder.itemView.context).load("https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg").into(viewHolder.detail_item_iv_content)
 
             //Explain
             viewHolder.detail_item_explain.text =contentDTOs!![position].explain
@@ -93,6 +95,10 @@ class DetailViewFragment : Fragment(){
                 favoriteEvent(position)
             }
 
+            //User ProfileImage
+            Glide.with(holder.itemView.context).load(contentDTOs!![position].imageUrl).into(viewHolder.detail_item_profile_image)
+
+
             //when the page is loaded //likes button -> ♡ or ♥
             if(contentDTOs!![position].favorites.containsKey(uid)){
                 //like ♥
@@ -102,8 +108,22 @@ class DetailViewFragment : Fragment(){
                 viewHolder.detail_item_favorite.setImageResource(R.drawable.ic_favorite_border)
             }
 
-            //User ProfileImage
-            Glide.with(holder.itemView.context).load(contentDTOs!![position].imageUrl).into(viewHolder.detail_item_profile_image)
+            //When the profile image is clicked
+            detail_item_profile_image.setOnClickListener {
+                var fragment =UserFragment()
+                var bundle = Bundle()
+                bundle.putString("destinationUid",contentDTOs[position].uid)
+                bundle.putString("userID",contentDTOs[position].userID)
+                fragment.arguments= bundle
+                activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.main_content,fragment)?.commit()
+            }
+
+            viewHolder.detail_item_comment.setOnClickListener { v->
+                var intent = Intent(v.context,CommentActivity::class.java)
+                intent.putExtra("contentUid",contentUidList[position])
+                startActivity(intent)
+            }
+
         }
 
         fun  favoriteEvent(position : Int){

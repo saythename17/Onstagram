@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation.CommentActivity">
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/billabong"
+        android:text="Onstagram"
+        android:textColor="@android:color/black"
+        android:textSize="32sp" />
+    <View
+        android:layout_below="@id/app_title"
+        android:id="@+id/toolbar_devision"
+        android:background="@color/colorDivision"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comment_recycler"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/toolbar_devision"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/comment_send_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/comment_et_message"
+        android:layout_toLeftOf="@id/comment_send_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

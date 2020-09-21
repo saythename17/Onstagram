@@ -5,19 +5,22 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
+        android:paddingRight="16dp"
         android:paddingBottom="10dp">
         <ImageView
             android:id="@+id/account_iv_profile"
             android:layout_alignParentLeft="true"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="8dp"
             android:src="@drawable/ic_account"/>
         <Button
             android:id="@+id/account_btn_follow"
             android:text="@string/follow"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/account_iv_profile"
+            android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
         <LinearLayout
