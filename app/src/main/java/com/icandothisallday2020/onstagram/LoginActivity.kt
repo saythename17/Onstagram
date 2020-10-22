@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
         //get facebook login hash key
         //printHashKey()//QLd68EsgmeKBvsybbLxQBFYYQz8=
         callbackManager = CallbackManager.Factory.create()
+
     }
 
 
@@ -201,7 +202,17 @@ class LoginActivity : AppCompatActivity() {
 
 
     fun signinEmail() {
-        auth?.signInWithEmailAndPassword(et_email.text.toString(), et_password.text.toString())
+//        auth?.signInWithEmailAndPassword(et_email.text.toString(), et_password.text.toString())
+//            ?.addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    //Login
+//                    moveMainPage(task.result?.user)
+//                } else {
+//                    //Show the message Login fail-- password/email not mach
+//                    Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+//                }
+//            }
+        auth?.createUserWithEmailAndPassword(et_email.text.toString(),et_password.text.toString())
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     //Login
