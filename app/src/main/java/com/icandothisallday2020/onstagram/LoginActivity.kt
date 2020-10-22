@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         moveMainPage(auth?.currentUser)
     }
 
+    //re push
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
